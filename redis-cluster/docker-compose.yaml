@@ -1,0 +1,52 @@
+version: '3.8'
+services:
+  redis_7001:
+    image: redis:7.4
+    container_name: redis_cluster_7001
+    command: ["redis-server", "/etc/redis/redis.conf"]
+    network_mode: host
+    restart: always
+    privileged: true
+    volumes:
+      - ./node_7001/data:/data
+      - ./node_7001/redis.conf:/etc/redis/redis.conf
+      - ./node_7001/logs/redis.log:/var/log/redis/redis.log
+    deploy:
+      resources:
+        limits:
+          cpus: '2'
+          memory: 2G
+
+  redis_7002:
+    image: redis:7.4
+    container_name: redis_cluster_7002
+    command: ["redis-server", "/etc/redis/redis.conf"]
+    network_mode: host
+    restart: always
+    privileged: true
+    volumes:
+      - ./node_7002/data:/data
+      - ./node_7002/redis.conf:/etc/redis/redis.conf
+      - ./node_7002/logs/redis.log:/var/log/redis/redis.log
+    deploy:
+      resources:
+        limits:
+          cpus: '2'
+          memory: 2G
+
+  redis_7003:
+    image: redis:7.4
+    container_name: redis_cluster_7003
+    command: ["redis-server", "/etc/redis/redis.conf"]
+    network_mode: host
+    restart: always
+    privileged: true
+    volumes:
+      - ./node_7003/data:/data
+      - ./node_7003/redis.conf:/etc/redis/redis.conf
+      - ./node_7003/logs/redis.log:/var/log/redis/redis.log
+    deploy:
+      resources:
+        limits:
+          cpus: '2'
+          memory: 2G
